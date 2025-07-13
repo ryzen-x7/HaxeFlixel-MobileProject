@@ -1,5 +1,5 @@
 <project>
-  <app title="MobileControls" package="com.example" version="1.0.0" company="Ryzen-X7"/>
+  <app title="MobileControls" package="com.fuckingproject.ryzen" version="1.0.0" company="Ryzen-X7"/>
   <source path="source" />
   <haxelib name="flixel" />
   <haxelib name="openfl" />
