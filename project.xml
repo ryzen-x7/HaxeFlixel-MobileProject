@@ -1,0 +1,12 @@
+<project>
+  <app title="MobileControls" package="com.example" version="1.0.0" company="Ryzen-X7"/>
+  <source path="source" />
+  <haxelib name="flixel" />
+  <haxelib name="openfl" />
+  <haxelib name="lime" />
+  <haxelib name="hxcpp" />
+  <assets path="assets/mobile" rename="assets/mobile" include="*.png;*.xml" />
+  <window width="480" height="854" fps="60" if="desktop"/>
+  <window if="android" fullscreen="true" />
+  <android manifestAdd="&lt;uses-sdk android:minSdkVersion=&quot;21&quot;/&gt;"/>
+</project>
