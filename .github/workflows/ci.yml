@@ -2,43 +2,44 @@ name: Build Android & Desktop
 
 on: [push, pull_request]
 
-jobs:
-  build-android:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+jobs: build-android:
+  runs-on: ubuntu-latest steps:
+- uses: actions/checkout@v3
 
-      - name: Set up Haxe
-        uses: krdlab/setup-haxe@v1
-        with:
-          haxe-version: 4.3.3
+- name: Set up Haxe
+    uses: krdlab/setup-haxe@v1
+    with:
+      haxe-version: 4.3.3
 
-      - name: Install dependencies
-        run: |
-          haxelib install flixel
-          haxelib install openfl
-          haxelib install lime
-          haxelib install hxcpp
+  - name: Install dependencies
+    run: |
+      haxelib install lime
+      haxelib install openfl
+      haxelib install flixel
+      haxelib install hxcpp
+      haxelib run lime setup -y
 
-      - name: Build Android
-        run: lime build android -release || lime build android -debug
+  - name: Build Android
+    run: haxelib run lime build android -release || haxelib run lime build android -debug
 
-  build-desktop:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+build-desktop:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v3
 
-      - name: Set up Haxe
-        uses: krdlab/setup-haxe@v1
-        with:
-          haxe-version: 4.3.3
+- name: Set up Haxe
+    uses: krdlab/setup-haxe@v1
+    with:
+      haxe-version: 4.3.3
 
-      - name: Install dependencies
-        run: |
-          haxelib install flixel
-          haxelib install openfl
-          haxelib install lime
-          haxelib install hxcpp
+  - name: Install dependencies
+    run: |
+      haxelib install lime
+      haxelib install openfl
+      haxelib install flixel
+      haxelib install hxcpp
+      haxelib run lime setup -y
 
-      - name: Build Desktop (Neko)
-        run: lime build neko
+  - name: Build Desktop (Neko)
+    run: haxelib run lime build neko
+
