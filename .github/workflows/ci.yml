@@ -1,35 +1,44 @@
 name: Build Android & Desktop
+
 on: [push, pull_request]
+
 jobs:
   build-android:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Haxe environment
-        uses: eternalsakura/setup-haxe@v1
+
+      - name: Set up Haxe
+        uses: krdlab/setup-haxe@v1
         with:
-          haxe-version: "4.3.3"
+          haxe-version: 4.3.3
+
       - name: Install dependencies
         run: |
           haxelib install flixel
           haxelib install openfl
           haxelib install lime
           haxelib install hxcpp
+
       - name: Build Android
         run: lime build android -release || lime build android -debug
+
   build-desktop:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Haxe environment
-        uses: eternalsakura/setup-haxe@v1
+
+      - name: Set up Haxe
+        uses: krdlab/setup-haxe@v1
         with:
-          haxe-version: "4.3.3"
+          haxe-version: 4.3.3
+
       - name: Install dependencies
         run: |
           haxelib install flixel
           haxelib install openfl
           haxelib install lime
           haxelib install hxcpp
+
       - name: Build Desktop (Neko)
         run: lime build neko
